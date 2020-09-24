@@ -1,4 +1,5 @@
 import discord
+
 from discord.ext import commands
 
 
@@ -32,6 +33,29 @@ class General(commands.Cog, name='General'):
                         value="Zeigt alle Informationen über den Bot an.", inline=False)
         embed.add_field(
             name="!h|help", value="Zeigt diesen Text hier an.", inline=False)
+
+        # send message
+        await ctx.send(ctx.author.mention, embed=embed)
+
+    @commands.command(aliases=['stat', 'shard', 'shards'])
+    async def stats(self, ctx):
+        # create output embed
+        embed = discord.Embed(
+            colour=discord.Colour.blue(),
+            title="Stats",
+        )
+
+        members_total = len(self.bot.users)
+        members_online = 0
+        for member in self.bot.get_all_members():
+            if member.status == discord.Status.online:
+                members_online += 1
+
+        embed.add_field(name='Mitglieder',
+                        value=f'{members_online} von {members_total} online', inline=False)
+
+        embed.add_field(name='Shards',
+                        value=f'Shard {ctx.guild.shard_id + 1} von {len(self.bot.shards)} (ID: {ctx.guild.shard_id})', inline=False)
 
         # send message
         await ctx.send(ctx.author.mention, embed=embed)
