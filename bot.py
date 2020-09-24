@@ -6,8 +6,10 @@ from discord.ext import commands
 from collections import Counter
 
 initial_extensions = (
+    'cogs.cogsmanagement',
+    'cogs.game',
     'cogs.general',
-    'cogs.members',
+    'cogs.members'
 )
 
 
