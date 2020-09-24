@@ -33,11 +33,13 @@ class General(commands.Cog, name='General'):
                         value="Zeigt alle Informationen über den Bot an.", inline=False)
         embed.add_field(
             name="!h|help", value="Zeigt diesen Text hier an.", inline=False)
+        embed.add_field(
+            name="!stats|stat", value="Zeigt eine Statistik an", inline=False)
 
         # send message
         await ctx.send(ctx.author.mention, embed=embed)
 
-    @commands.command(aliases=['stat', 'shard', 'shards'])
+    @commands.command(aliases=['stat'])
     async def stats(self, ctx):
         # create output embed
         embed = discord.Embed(
