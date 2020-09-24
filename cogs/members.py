@@ -21,14 +21,13 @@ class Members(commands.Cog, name='Members'):
             if guild_history_channel != None:
                 await guild_history_channel.send('**Willkommen {0.mention} :tada:**'.format(member))
 
-    @ commands.Cog.listener()
+    @commands.Cog.listener()
     async def on_member_remove(self, member):
         if self.guild_history_channel_id > 0:
             guild_history_channel = member.guild.get_channel(
                 self.guild_history_channel_id)
             if guild_history_channel != None:
-                await guild_history_channel.send(
-                    '*Bye {0.mention} :sleepy:*'.format(member))
+                await guild_history_channel.send('*Bye {0.mention} :sleepy:*'.format(member))
 
 
 def setup(bot):
