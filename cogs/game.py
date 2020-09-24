@@ -26,7 +26,7 @@ class Game(commands.Cog, name='Game'):
     def cog_unload(self):
         self.check_for_games.cancel()
 
-    @tasks.loop(seconds=5.0)
+    @tasks.loop(seconds=60.0)
     async def check_for_games(self):
 
         if (not hasattr(self, 'guild') or not self.guild):
