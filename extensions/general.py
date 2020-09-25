@@ -21,7 +21,7 @@ class General(commands.Cog, name='General'):
         # send message
         await ctx.send(ctx.author.mention, embed=embed)
 
-    @commands.command(aliases=['h'])
+    @commands.command(aliases=['h', 'hilfe'])
     async def help(self, ctx):
         # create output embed
         embed = discord.Embed(

@@ -1,16 +1,14 @@
 import discord
 import os
 import sys
+import logging
 
 from discord.ext import commands
 from collections import Counter
+from models.extension import Extension
+from db import db_session
 
-initial_extensions = (
-    'cogs.cogsmanagement',
-    'cogs.game',
-    'cogs.general',
-    'cogs.members'
-)
+log = logging.getLogger(__name__)
 
 
 class JustGamingBot(commands.AutoShardedBot):
@@ -21,14 +19,24 @@ class JustGamingBot(commands.AutoShardedBot):
         # remove default commands
         self.remove_command('help')
 
-        # load extensions
-        for extension in initial_extensions:
+        # try to load extensions management extension
+        try:
+            self.load_extension('extensions.extensionsmanagement')
+        except Exception:
+            log.exception(
+                "Bot failed to load \"extensionsmanagement\"-extension exception")
+            sys.exit()
+
+        # get loaded extension and try to load them
+        extensions = Extension.loaded()
+        for extension in extensions:
             try:
-                self.load_extension(extension)
-            except Exception as e:
-                print(
-                    f'Failed to load extension {extension}.', file=sys.stderr)
-                print(e)
+                self.load_extension('extensions.' + extension.name)
+            except Exception:
+                extension.isLoaded = False
+                db_session.commit()
+                log.exception(
+                    "Bot failed to load the extension \"" + extension.name + "\"")
 
     def run(self):
         super().run(os.getenv('BOT_TOKEN'), reconnect=True)

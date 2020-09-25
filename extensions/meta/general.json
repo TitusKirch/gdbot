@@ -1,0 +1,5 @@
+{
+    "name": "general",
+    "description": "Bietet grundlegende Befehle wie den Befehl `!info` und `!hilfe`.",
+    "author": "Titus Kirch"
+}
