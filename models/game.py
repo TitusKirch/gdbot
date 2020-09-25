@@ -15,3 +15,4 @@ class Game(Base):
     gameID = Column(Integer, autoincrement=True, primary_key=True)
     key = Column(String(length=255))
     name = Column(String(length=255))
+    groupID = Column(Integer, nullable=True)
