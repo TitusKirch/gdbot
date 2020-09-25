@@ -29,6 +29,9 @@ sys.path.append(ROOT_PATH)
 # import models
 from models.base import Base
 from models.extension import Extension
+from models.game import Game
+from models.application import Application
+from models.applicationGame import ApplicationGame
 
 # set metadata
 target_metadata = Base.metadata
