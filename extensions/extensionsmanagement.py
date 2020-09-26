@@ -49,7 +49,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                     type(e).__name__, e), inline=False)
 
                 # send embed
-                await ctx.send(embed=embed)
+                await ctx.send(ctx.author.mention, embed=embed)
             else:
                 # create output embed
                 embed = discord.Embed(
@@ -57,7 +57,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                     title=f'"{extension}" wurde erfolgreich aktiviert!'
                 )
                 # send embed
-                await ctx.send(embed=embed)
+                await ctx.send(ctx.author.mention, embed=embed)
         else:
             # create output embed
             embed = discord.Embed(
@@ -68,7 +68,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                 name="Fehler", value="Die Erweiterung steht auf der Blockliste und darf nicht aktiviert werden.", inline=False)
 
             # send embed
-            await ctx.send(embed=embed)
+            await ctx.send(ctx.author.mention, embed=embed)
 
     @commands.command(aliases=['deaktiviere'], hidden=True)
     @commands.has_permissions(administrator=True)
@@ -105,7 +105,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                     type(e).__name__, e), inline=False)
 
                 # send embed
-                await ctx.send(embed=embed)
+                await ctx.send(ctx.author.mention, embed=embed)
             else:
                 # create output embed
                 embed = discord.Embed(
@@ -113,7 +113,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                     title=f'"{extension}" wurde erfolgreich deaktiviert!'
                 )
                 # send embed
-                await ctx.send(embed=embed)
+                await ctx.send(ctx.author.mention, embed=embed)
         else:
             # create output embed
             embed = discord.Embed(
@@ -124,7 +124,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                 name="Fehler", value="Die Erweiterung steht auf der Blockliste und darf nicht deaktiviert werden.", inline=False)
 
             # send embed
-            await ctx.send(embed=embed)
+            await ctx.send(ctx.author.mention, embed=embed)
 
     @commands.command(aliases=['neuladen'], hidden=True)
     @commands.has_permissions(administrator=True)
@@ -149,7 +149,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                     type(e).__name__, e), inline=False)
 
                 # send embed
-                await ctx.send(embed=embed)
+                await ctx.send(ctx.author.mention, embed=embed)
             else:
                 # create output embed
                 embed = discord.Embed(
@@ -157,7 +157,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                     title=f'"{extension}" wurde erfolgreich neugeladen!'
                 )
                 # send embed
-                await ctx.send(embed=embed)
+                await ctx.send(ctx.author.mention, embed=embed)
         else:
             # create output embed
             embed = discord.Embed(
@@ -168,7 +168,7 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                 name="Fehler", value="Die Erweiterung steht auf der Blockliste und darf nicht neugeladen werden.", inline=False)
 
             # send embed
-            await ctx.send(embed=embed)
+            await ctx.send(ctx.author.mention, embed=embed)
 
     @commands.command(aliases=['erweiterungen', 'cogs', 'ls'])
     @commands.has_permissions(administrator=True)
@@ -205,8 +205,8 @@ class ExtensionsManagement(commands.Cog, name='ExtensionsManagement'):
                 name="Keine Erweiterungen", value="Es sind keine Erweiterungen deaktiviert!", inline=False)
 
         # send embeds
-        await ctx.send(embed=embed_loaded)
-        await ctx.send(embed=embed_unloaded)
+        await ctx.send(ctx.author.mention, embed=embed_loaded)
+        await ctx.send(ctx.author.mention, embed=embed_unloaded)
 
 
 def setup(bot):
