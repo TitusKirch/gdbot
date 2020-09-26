@@ -16,3 +16,7 @@ class Game(Base):
     key = Column(String(length=255))
     name = Column(String(length=255))
     groupID = Column(Integer, nullable=True)
+
+    @classmethod
+    def getByKey(cls, key: str) -> 'Game':
+        return db_session.query(Game).filter(Game.key == key).first()
