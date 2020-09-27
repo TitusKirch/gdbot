@@ -38,5 +38,11 @@ class JustGamingBot(commands.AutoShardedBot):
                 log.exception(
                     "Bot failed to load the extension \"" + extension.name + "\"")
 
+    async def on_ready(self):
+        await self.change_presence(activity=discord.Activity(
+            name="Rechnen im Binärsystem",
+            type=discord.ActivityType.playing
+        ))
+
     def run(self):
         super().run(os.getenv('BOT_TOKEN'), reconnect=True)

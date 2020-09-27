@@ -13,3 +13,4 @@ class Application(Base):
     __tablename__ = 'applications'
 
     applicationID = Column(Integer, autoincrement=True, primary_key=True)
+    name = Column(String(length=255))
