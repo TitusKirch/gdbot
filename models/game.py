@@ -20,3 +20,7 @@ class Game(Base):
     @classmethod
     def getByKey(cls, key: str) -> 'Game':
         return db_session.query(Game).filter(Game.key == key).first()
+
+    @classmethod
+    def all(cls) -> List['Game']:
+        return db_session.query(Game).all()

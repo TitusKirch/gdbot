@@ -6,7 +6,7 @@ import logging
 from discord.ext import commands
 from collections import Counter
 from models.extension import Extension
-from db import db_session
+from db import db_session, db_engine, Session
 
 log = logging.getLogger(__name__)
 

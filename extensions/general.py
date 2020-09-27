@@ -1,6 +1,7 @@
 import discord
 
 from discord.ext import commands
+from db import db_session, db_engine, Session
 
 
 class General(commands.Cog, name='General'):
@@ -29,10 +30,12 @@ class General(commands.Cog, name='General'):
             title="Hilfe",
             description="Hier findest du eine Übersicht aller aktiven Befehle."
         )
+        embed.add_field(
+            name="!games|spiele", value="Zeigt dir alle unterstützten Spiele an.", inline=False)
+        embed.add_field(
+            name="!h|help|hilfe", value="Zeigt diesen Text hier an.", inline=False)
         embed.add_field(name="!i|info|information",
                         value="Zeigt alle Informationen über den Bot an.", inline=False)
-        embed.add_field(
-            name="!h|help", value="Zeigt diesen Text hier an.", inline=False)
         embed.add_field(
             name="!stats|stat", value="Zeigt eine Statistik an", inline=False)
 
